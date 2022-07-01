@@ -30,7 +30,7 @@ class NetworkManager extends ChangeNotifier{
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     connectionStatus = result;
-    this.isFailed = true;
+    this.isFailed = (connectionStatus == ConnectivityResult.none) ? true : false;
     this.isLoading = false;
     this.result = (connectionStatus == ConnectivityResult.none) ? "ネットワークにつながっていません" : "ネットワークにつながっています";
     notifyListeners();
